@@ -1,3 +1,10 @@
+name: Deploy Image Processor
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,7 +23,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      # 👇 ADD THIS BLOCK HERE
       - name: Verify AWS Identity
         run: aws sts get-caller-identity
 
